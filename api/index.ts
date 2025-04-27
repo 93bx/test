@@ -15,6 +15,7 @@ app.get('/', (c) => {
 app.get("/:id/:ss?/:ep?", async (c) => {
   const { id, ss, ep } = c.req.param();
   const results = (!ss && !ep) ? await tmdbScrape(id, "movie") : await tmdbScrape(id, "tv", Number(ss), Number(ep));
+  console.log(results);
   return c.json(results);
 });
 
